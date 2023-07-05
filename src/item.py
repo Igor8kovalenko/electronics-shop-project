@@ -21,7 +21,7 @@ class Item:
         :param quantity: Количество товара в магазине.
         """
 
-        self.__name = name
+        self.name = name
         self.price = price
         self.quantity = quantity
         self.all.append(self)
@@ -45,12 +45,12 @@ class Item:
 
     @property
     def name(self):
-        return self.__name
+        return self.name
 
     @name.setter
     def name(self, name):
         self.item_name(name)
-        self.__name = name
+        self.name = name
 
     @staticmethod
     def string_to_number(str_number):
