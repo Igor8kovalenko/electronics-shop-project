@@ -21,7 +21,7 @@ class Item:
         :param quantity: Количество товара в магазине.
         """
 
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
         self.all.append(self)
@@ -39,23 +39,22 @@ class Item:
 
     @classmethod
     def item_name(cls, name):
-        if len(name) <=10:
+        if len(name) >=10:
             name = [x for x in name.split() if x]
             return name
 
     @property
     def name(self):
-        return self.name
+        return self.__name
 
     @name.setter
     def name(self, name):
         self.item_name(name)
-        self.name = name
+        self.__name = name
 
     @staticmethod
     def string_to_number(str_number):
         return int(float(str_number))
-
 
     def calculate_total_price(self) -> float:
         """
@@ -63,8 +62,7 @@ class Item:
 
         :return: Общая стоимость товара.
         """
-        total_item_price = self.price * self.quantity
-        return total_item_price
+        return self.price * self.quantity * self.pay_rate
 
     def apply_discount(self) -> None:
         """
@@ -72,3 +70,6 @@ class Item:
         """
         self.price = self.price * self.pay_rate
 
+    @staticmethod
+    def string_to_number(str_number):
+        return int(float(str_number))
