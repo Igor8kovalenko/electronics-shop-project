@@ -1,6 +1,5 @@
+
 import os
-
-
 import csv
 
 path = os.path.join('..', 'src', 'items.csv')
@@ -20,7 +19,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-
+        self.item_name(name)
         self.__name = name
         self.price = price
         self.quantity = quantity
@@ -39,7 +38,7 @@ class Item:
 
     @classmethod
     def item_name(cls, name):
-        if len(name) >=10:
+        if len(name) <= 10 :
             name = [x for x in name.split() if x]
             return name
 
@@ -56,13 +55,15 @@ class Item:
     def string_to_number(str_number):
         return int(float(str_number))
 
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
 
         :return: Общая стоимость товара.
         """
-        return self.price * self.quantity * self.pay_rate
+        total_item_price = self.price * self.quantity
+        return total_item_price
 
     def apply_discount(self) -> None:
         """
