@@ -2,7 +2,7 @@
 import os
 import csv
 
-path = os.path.join('..', 'src', 'items.csv')
+# path = os.path.join('..', 'src', 'items.csv')
 class Item:
 
     """
@@ -19,7 +19,6 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.item_name(name)
         self.__name = name
         self.price = price
         self.quantity = quantity
@@ -32,7 +31,7 @@ class Item:
             with open(path, encoding='windows-1251', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 cls.all = [cls((row['name']), float(row['price']), int(row['quantity'])) for row in reader]
-        # return cls.all
+
         except FileNotFoundError:
             print('_Отсутствует файл item.csv_')
 
@@ -74,3 +73,4 @@ class Item:
     @staticmethod
     def string_to_number(str_number):
         return int(float(str_number))
+
