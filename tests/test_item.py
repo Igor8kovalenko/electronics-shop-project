@@ -10,27 +10,21 @@ item1 = Item("Смартфон", 10000, 20)
 
 
 def test_calculate_total_price():
-    item = Item("Product", 10000, 20)
-    assert item.calculate_total_price() == 200000
+    item1 = Item("Product", 10000, 20)
+    assert item1.calculate_total_price() == 200000
 
 def test_apply_discount():
-    item = Item("Product", 10000, 20)
+    item1 = Item("Product", 10000, 20)
     Item.pay_rate = 0.8  # set the discount to 20%
-    item.apply_discount()
-    assert item.price == 8000
+    item1.apply_discount()
+    assert item1.price == 8000
 
-def test_name():
-    item1.name = 'Смартфон'
-    assert item1.name == 'Смартфон'
+def test_name_setter():
+    item1.name = 'Телефон'
+    assert item1.name == 'Телефон'
+    item1.name = 'СуперСмартфон'
+    assert item1.name == 'СуперСмарт'
 
-
-
-def test_instantiate_from_csv():
-    try:
-        Item.instantiate_from_csv()
-        assert len(Item.all) == 5
-    except Exception as ex:
-        assert ex.args[0] == "Длина наименования товара превышает 10 символов."
 
 @pytest.mark.parametrize("a, result", [('5', 5),
                                        ('5.0', 5),

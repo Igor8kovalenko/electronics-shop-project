@@ -47,8 +47,11 @@ class Item:
 
     @name.setter
     def name(self, name):
-        self.item_name(name)
-        self.__name = name
+        if len(name) <= 10:
+            self.__name = name
+        elif len(name) > 10:
+            self.__name = name[:10]
+
 
     @staticmethod
     def string_to_number(str_number):
