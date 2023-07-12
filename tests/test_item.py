@@ -6,6 +6,7 @@ import pytest
 import os
 path = os.path.join('..', 'tests', 'test_items.csv')
 
+item = Item("Смартфон", 10000, 20)
 item1 = Item("Смартфон", 10000, 20)
 
 
@@ -26,6 +27,7 @@ def test_name_setter():
     assert item1.name == 'СуперСмарт'
 
 
+
 @pytest.mark.parametrize("a, result", [('5', 5),
                                        ('5.0', 5),
                                        ('5.5', 5)])
@@ -35,3 +37,11 @@ def test_string_to_number(a, result):
 def test_calculate_total_price():
     assert item1.calculate_total_price() == 200000.0
 
+
+
+def test__repr__():
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+
+def test__str__():
+    assert str(item1) == 'Смартфон'

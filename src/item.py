@@ -4,14 +4,13 @@ import csv
 
 # path = os.path.join('..', 'src', 'items.csv')
 class Item:
-
     """
     Класс для представления товара в магазине.
     """
     pay_rate = 1.0
     all = []
 
-    def __init__(self, name: str, price: float, quantity: int) -> None:
+    def __init__(self, name: str, price: float, quantity: int):
         """
         Создание экземпляра класса item.
 
@@ -19,11 +18,15 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.__name = name
+        self._name = name
         self.price = price
         self.quantity = quantity
-        self.all.append(self)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self._name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f'{self._name}'
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
@@ -76,4 +79,6 @@ class Item:
     @staticmethod
     def string_to_number(str_number):
         return int(float(str_number))
+
+
 
